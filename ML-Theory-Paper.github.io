@@ -3,87 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>可操作表格</title>
+    <title>个人网页</title>
     <style>
         body {
-            display: flex;
-            justify-content: space-around;
-            align-items: flex-start;
-            margin: 20px;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
         }
-        table {
-            border-collapse: collapse;
-            width: 200px;
-            margin: 10px;
-        }
-        th, td {
-            border: 1px solid #000;
-            padding: 8px;
+        header {
+            background: #333;
+            color: #fff;
+            padding: 10px 0;
             text-align: center;
-            cursor: pointer;
         }
-        th {
-            background-color: #f2f2f2;
+        nav {
+            margin: 20px 0;
+        }
+        nav a {
+            margin: 0 15px;
+            color: #333;
+            text-decoration: none;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background: #333;
+            color: #fff;
+            position: relative;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
 
-    <table id="table1">
-        <thead>
-            <tr><th>表格1</th></tr>
-        </thead>
-        <tbody>
-            <tr><td>行1</td></tr>
-            <tr><td>行2</td></tr>
-            <tr><td>行3</td></tr>
-        </tbody>
-    </table>
+<header>
+    <h1>欢迎来到我的个人网页</h1>
+</header>
 
-    <div>
-        <button onclick="moveRow('table1', 'table2')">→</button>
-        <button onclick="moveRow('table2', 'table1')">←</button>
-    </div>
+<nav>
+    <a href="#about">关于我</a>
+    <a href="#projects">项目</a>
+    <a href="#contact">联系方式</a>
+</nav>
 
-    <table id="table2">
-        <thead>
-            <tr><th>表格2</th></tr>
-        </thead>
-        <tbody>
-            <tr><td>行A</td></tr>
-            <tr><td>行B</td></tr>
-        </tbody>
-    </table>
+<div class="container">
+    <section id="about">
+        <h2>关于我</h2>
+        <p>这里是你的个人介绍，可以包含你的兴趣、经历等信息。</p>
+    </section>
 
-    <script>
-        function moveRow(fromTableId, toTableId) {
-            const fromTable = document.getElementById(fromTableId);
-            const toTable = document.getElementById(toTableId);
-            const selectedRow = getSelectedRow(fromTable);
+    <section id="projects">
+        <h2>项目</h2>
+        <p>在这里展示你的一些项目或作品。</p>
+    </section>
 
-            if (selectedRow) {
-                toTable.querySelector("tbody").appendChild(selectedRow);
-            }
-        }
+    <section id="contact">
+        <h2>联系方式</h2>
+        <p>提供你的联系方式，比如电子邮件、社交媒体链接等。</p>
+    </section>
+</div>
 
-        function getSelectedRow(table) {
-            const rows = table.querySelectorAll("tbody tr");
-            for (const row of rows) {
-                if (row.style.backgroundColor === "yellow") {
-                    row.style.backgroundColor = ""; // Reset background color
-                    return row;
-                }
-            }
-            return null;
-        }
-
-        document.querySelectorAll("table tbody tr").forEach(row => {
-            row.onclick = function() {
-                const isSelected = this.style.backgroundColor === "yellow";
-                this.style.backgroundColor = isSelected ? "" : "yellow";
-            };
-        });
-    </script>
+<footer>
+    <p>&copy; 2025 你的名字</p>
+</footer>
 
 </body>
 </html>
